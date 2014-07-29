@@ -1,10 +1,47 @@
+function getAudio() {
+
+    var musicEls = document.getElementsByClassName("audio");
+
+    for (var i = 0; i < musicEls.length; i++) {
+        if (musicEls[i].firstChild.href) {
+            musicEls[i].firstChild.style.top = musicEls[i].getElementsByClassName('play_new')[0].offsetTop + "px";
+            continue;
+        }
+
+        var _mp3_ = musicEls[i].getElementsByTagName("input")[0].value.split("?")[0]; // get audio url
+        var _b_ = main_div[i].getElementsByTagName("b")[0];
+        var _top_ = document.getElementById(main_div[0].parentNode.id.replace('audio', 'play')).offsetTop + "px";
+        var _t_ = main_div[i].getElementsByClassName('play_new')[0].offsetTop + "px";
+        var span = main_div[i].getElementsByTagName('span')[0];
+        var ispan = span.innerHTML;
+        if (span.children[0]) {
+            var ispan = span.children[0].innerHTML;
+        }
+        var _a_ = document.createElement("a");
+        _a_.href = _mp3_.substring(0, _mp3_.indexOf('.mp3') + 4);
+        _a_.download = trim(_b_.children[0].innerHTML + "-" + ispan) + ".mp3";
+        _a_.title = 'Скачать ' + _b_.children[0].innerHTML + "-" + ispan;
+        _a_.draggable = "true";
+        _a_.innerHTML = '<span style="cursor:copy;padding:6px;width:16px;height:16px;background-color:#5F7D9D;color:#fff;border-radius:2px;"><img src="http://st0.vk.me/images/icons/darr.gif" /></span>';
+        _a_.style.zIndex = "10";
+        _a_.style.left = "30px";
+        _a_.style.top = _t_;
+        _a_.style.position = "absolute";
+        main_div[i].parentNode.insertBefore(_a_, main_div[i].parentNode.firstChild);
+        _b_.style.paddingLeft = "27px";
+    }
+}
+
 function audio() {
+
     var main_div = document.getElementsByClassName("area clear_fix");
+
     for (var i = 0; i < main_div.length; i++) {
         if (main_div[i].parentNode.firstChild.href) {
             main_div[i].parentNode.firstChild.style.top = main_div[i].getElementsByClassName('play_new')[0].offsetTop + "px";
             continue;
         }
+
         var _mp3_ = main_div[i].getElementsByTagName("input")[0].value.split(",")[0];
         var _b_ = main_div[i].getElementsByTagName("b")[0];
         var _top_ = document.getElementById(main_div[0].parentNode.id.replace('audio', 'play')).offsetTop + "px";
