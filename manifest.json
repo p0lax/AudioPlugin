@@ -1,19 +1,21 @@
 {
- "manifest_version":2,
- "name":"Downloader",
- "version":"1.0",
- "description":"Downloader of mp3 files from vk.com. See also how to parse music from mail.ru on Muzbank.net",
- "permissions": [
-  "http://vk.com/*",
-  "tabs"
- ],
-    "content_scripts": [ {
-      "js": [ "main.js" ],
-      "matches": [ "http://vk.com/*", "http://*.vk.com/*", "https://vk.com/*", "https://*.vk.com/*" ],
-      "run_at": "document_end"
-   } ],
- "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
-  "browser_action": {
-  "default_title":"Downloader Extension"
-  }
+    "manifest_version": 2,
+    "name": "Downloader",
+    "version": "1.0",
+    "description": "Downloader mp3 music from vk.com",
+    "permissions": [
+        "http://vk.com/*",
+        "tabs"
+    ],
+    "content_scripts": [
+        {
+            "js": ["main.js"],
+            "matches": [ "http://vk.com/*", "http://*.vk.com/*", "https://vk.com/*", "https://*.vk.com/*" ],
+            "run_at": "document_end"
+        }
+    ],
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+    "browser_action": {
+        "default_title":"Downloader Extension"
+    }
 }
